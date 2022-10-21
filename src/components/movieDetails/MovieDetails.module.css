@@ -1,0 +1,21 @@
+.container {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.infoContainer {
+    display: flex;
+}
+
+.info {
+    margin-left: 20px;
+}
+
+.about {
+    margin-top: 20px;
+    width: 50%;
+}
+
+.img:hover {
+    cursor: pointer;
+}

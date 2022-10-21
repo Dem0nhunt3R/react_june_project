@@ -1,0 +1,7 @@
+.container{
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    color: white;
+    height: 40px
+}
