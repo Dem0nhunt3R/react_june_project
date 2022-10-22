@@ -44,6 +44,9 @@ const movieSlice = createSlice({
         },
         resetMovie: (state) => {
             state.movie = null;
+        },
+        resetMovies: (state) => {
+            state.movies = [];
         }
     },
     extraReducers: builder => {
@@ -75,14 +78,14 @@ const movieSlice = createSlice({
     }
 });
 
-const {reducer: movieReducer, actions: {setCurrentPage, resetMovie, setCurrentPath}} = movieSlice;
+const {reducer: movieReducer, actions: {setCurrentPage, resetMovie, resetMovies}} = movieSlice;
 
 const movieActions = {
     getAll,
     getById,
     setCurrentPage,
     resetMovie,
-    setCurrentPath
+    resetMovies
 }
 
 export {movieReducer, movieActions};

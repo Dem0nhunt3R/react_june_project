@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {genreService} from "../../services";
 
 const initialState = {
@@ -27,7 +28,8 @@ const genreSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                state.genres = action.payload;
+                console.log(action.payload)
+                state.genres = action.payload.genres;
                 state.loading = false;
             })
             .addCase(getAll.pending, state => {

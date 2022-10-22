@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 
 import {Movies, MyPagination} from "../components";
-import {genreActions, movieActions} from "../redux";
+import {movieActions} from "../redux";
 
 const MoviesPage = () => {
     const {pageNumber} = useParams();
@@ -11,7 +11,6 @@ const MoviesPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(genreActions.getAll());
         if (pageNumber) {
             dispatch(movieActions.getAll(pageNumber))
             dispatch(movieActions.setCurrentPage(+pageNumber))
@@ -24,6 +23,7 @@ const MoviesPage = () => {
     return (
         <div>
             <Movies movies={movies}/>
+            <hr/>
             <MyPagination endpoint={'/movies'}/>
         </div>
     );

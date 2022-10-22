@@ -1,0 +1,47 @@
+.container {
+    border-bottom: 1px solid grey;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 50%;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.black {
+    color: black;
+}
+
+.white {
+    color: white;
+}
+
+.ml {
+    margin-left: 5px;
+}
+
+.dropdown {
+    width: 80%;
+    height: 100px;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.disNone {
+    display: none;
+}
+
+.disGrid {
+    position: relative;
+    display: block;
+}

@@ -9,7 +9,7 @@ import {MyModal} from "../myModal/MyModal";
 
 const MovieDetails = () => {
     const {movie} = useSelector(state => state.movieReducer);
-    console.log(movie)
+    const {checked} = useSelector(state => state.themeReducer);
     const [modal, setModal] = useState(null);
     const {
         title,
@@ -32,8 +32,9 @@ const MovieDetails = () => {
             {movie &&
                 <div className={css.container}>
                     <div>
-                        <h2>{title}</h2>
-                        {title !== original_title ? <h4>{original_title}</h4> : ''}
+                        <h2 className={checked ? css.white : css.black}>{title}</h2>
+                        {title !== original_title ?
+                            <h4 className={checked ? css.white : css.black}>{original_title}</h4> : ''}
                     </div>
 
                     <div className={css.infoContainer}>
@@ -43,12 +44,12 @@ const MovieDetails = () => {
 
                         <div className={css.info}>
                             {tagline && <p>Tagline: {tagline}</p>}
-                            <p>Release date: {getDate(date)}</p>
-                            <p>Genres: {getStringFromArray(genres)}</p>
-                            <p>Time: {runtime}</p>
+                            <p className={checked ? css.white : css.black}>Release date: {getDate(date)}</p>
+                            <p className={checked ? css.white : css.black}>Genres: {getStringFromArray(genres)}</p>
+                            <p className={checked ? css.white : css.black}>Time: {runtime}</p>
                             {adult && <p>18+</p>}
-                            <p>{countries.length > 1 ? 'Countries' : 'Country'}: {getStringFromArray(countries)}</p>
-                            <p>{companies.length > 1 ? 'Companies' : 'Company'}: {getStringFromArray(companies)}</p>
+                            <p className={checked ? css.white : css.black}>{countries.length > 1 ? 'Countries' : 'Country'}: {getStringFromArray(countries)}</p>
+                            <p className={checked ? css.white : css.black}>{companies.length > 1 ? 'Companies' : 'Company'}: {getStringFromArray(companies)}</p>
                         </div>
 
                     </div>
@@ -56,11 +57,12 @@ const MovieDetails = () => {
                     <div className={css.about}>
                         <div>
                             <MyRating rate={vote_average}/>
-                            <span>Ratings: {vote_average.toFixed(1)} ({vote_count} votes)</span>
+                            <span
+                                className={checked ? css.white : css.black}>Ratings: {vote_average.toFixed(1)} ({vote_count} votes)</span>
                         </div>
 
-                        <h3>What is the film "{title}" about : </h3>
-                        <p>{overview}</p>
+                        <h3 className={checked ? css.white : css.black}>What is the film "{title}" about : </h3>
+                        <p className={checked ? css.white : css.black}>{overview}</p>
                         <MyModal visible={modal} setVisible={setModal} img={{path, title}}/>
                     </div>
                 </div>

@@ -1,0 +1,15 @@
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    opacity: 0.7;
+}
+.link:hover{
+    cursor: pointer;
+    opacity: 1;
+    color: white;
+}

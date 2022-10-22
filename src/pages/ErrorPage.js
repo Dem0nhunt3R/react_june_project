@@ -1,5 +1,4 @@
 const ErrorPage = () => {
-    
     return (
         <div>
             ErrorPage
