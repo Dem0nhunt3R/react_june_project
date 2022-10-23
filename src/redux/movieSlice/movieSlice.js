@@ -13,21 +13,23 @@ const initialState = {
 
 const getAll = createAsyncThunk(
     'movieSlice/getAll',
-    async ({pageNumber: page, genre: with_genres}, {rejectWithValue}) => {
+    async (queries, {rejectWithValue}) => {
         try {
-            if (with_genres) {
-                if (with_genres && page) {
-                    const {data} = await movieService.getMovies({page, with_genres});
-                    return data;
-
-                } else {
-                    const {data} = await movieService.getMovies({with_genres});
-                    return data;
-                }
-            } else if (page) {
-                const {data} = await movieService.getMovies({page});
-                return data;
-            }
+            // if (with_genres) {
+            //     if (with_genres && page) {
+            //         const {data} = await movieService.getMovies({page, with_genres});
+            //         return data;
+            //
+            //     } else {
+            //         const {data} = await movieService.getMovies({with_genres});
+            //         return data;
+            //     }
+            // } else if (page) {
+            //     const {data} = await movieService.getMovies({page});
+            //     return data;
+            // }
+            const {data} = await movieService.getMovies(queries);
+            return data;
         } catch (e) {
             return rejectWithValue(e.response.data)
         }

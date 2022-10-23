@@ -13,9 +13,11 @@ const MoviesPage = () => {
 
     useEffect(() => {
         if (!pageNumber && !genre) {
-            dispatch(genreActions.getAll());
+            if (genres.length === 0) {
+                dispatch(genreActions.getAll());
+            }
             dispatch(movieActions.setCurrentPage(1))
-            dispatch(movieActions.getAll({pageNumber: 1}));
+            dispatch(movieActions.getAll({page: 1}));
         }
     }, [pageNumber, genre, dispatch]);
 
@@ -32,19 +34,22 @@ const MoviesPage = () => {
                 dispatch(movieActions.resetMovies());
                 if (genres.length > 1) {
                     const find = genres.find(g => g.name.toLowerCase() === genre);
-                    dispatch(movieActions.getAll({genre: find.id}))
+                    dispatch(movieActions.getAll({with_genres: find.id}))
                 } else {
-                    getGenreId(genre).then(genreId => dispatch(movieActions.getAll({genre: genreId})))
+                    getGenreId(genre).then(genreId => dispatch(movieActions.getAll({with_genres: genreId})))
                 }
             } else if (!genre && pageNumber) {
                 dispatch(movieActions.setCurrentPage(+pageNumber));
-                dispatch(movieActions.getAll({pageNumber}));
+                dispatch(movieActions.getAll({page: pageNumber}));
             } else {
                 if (genres.length > 1) {
                     const find = genres.find(g => g.name.toLowerCase() === genre);
-                    dispatch(movieActions.getAll({pageNumber, genre: find.id}));
+                    dispatch(movieActions.getAll({page: pageNumber, with_genres: find.id}));
                 } else {
-                    getGenreId(genre).then(genreId => dispatch(movieActions.getAll({pageNumber, genre: genreId})))
+                    getGenreId(genre).then(genreId => dispatch(movieActions.getAll({
+                        page: pageNumber,
+                        with_genres: genreId
+                    })))
                 }
                 dispatch(movieActions.setCurrentPage(+pageNumber));
             }
