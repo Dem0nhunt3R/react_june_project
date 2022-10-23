@@ -6,9 +6,7 @@ const MyRating = ({rate}) => {
             initialValue={rate}
             allowFraction={true}
             iconsCount={10}
-            transition={true}
-        />
-
+            transition={true}/>
     );
 };
 

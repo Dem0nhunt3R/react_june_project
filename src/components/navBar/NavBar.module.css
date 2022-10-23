@@ -39,9 +39,11 @@
 
 .dropdown {
     background-color: white;
-    width: 60%;
+    opacity: 0.95;
+    width: 40rem;
     position: absolute;
     box-shadow: 0 0 10px rgb(0 0 0/40%);
+    transition: all 1s ease-in
 }
 
 .disNone {
@@ -59,6 +61,7 @@
     gap: 10px;
     padding: 10px 0 10px 50px;
     box-sizing: border-box;
+    overflow:auto;
 }
 .dropLi{
     height: 25px;
@@ -75,6 +78,7 @@
 
 .bgb{
     border: 1px solid white;
-    background-color: black;
+    background-color: #1e1d1d;
+    opacity: 0.95;
     box-shadow: 0 0 10px  rgb(255 255 255);
 }

@@ -1,0 +1,13 @@
+.img{
+    width: 158px;
+    height: 89px;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 3rem;
+    border-radius: 5px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}

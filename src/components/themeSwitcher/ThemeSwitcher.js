@@ -11,18 +11,17 @@ const ThemeSwitcher = () => {
     return (
         <div className={css.container}>
             <ReactSwitch
-            checked={checked}
-            onChange={() => dispatch(themeActions.toggle(!checked))}
-            onColor={'#fff'}
-            offColor={'#555'}
-            offHandleColor={'#000'}
-            onHandleColor={'#000'}
-            checkedIcon={<i className="fa-solid fa-sun" style={{color:'gold', marginLeft:'5px'}}></i>}
-            uncheckedIcon={<i className="fa-solid fa-moon" style={{color: 'gold', marginLeft:'8px'}}></i>}
-            height={24}
-            width={50}
-            handleDiameter={20}
-        />
+                checked={checked}
+                onChange={() => dispatch(themeActions.toggle(!checked))}
+                onColor={'#fff'}
+                offColor={'#555'}
+                offHandleColor={'#000'}
+                onHandleColor={'#000'}
+                checkedIcon={<i className="fa-solid fa-sun" style={{color: 'gold', marginLeft: '5px'}}></i>}
+                uncheckedIcon={<i className="fa-solid fa-moon" style={{color: 'gold', marginLeft: '8px'}}></i>}
+                height={24}
+                width={50}
+                handleDiameter={20}/>
         </div>
     );
 };

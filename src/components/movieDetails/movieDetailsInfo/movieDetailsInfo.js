@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 
-import {getDate, getStringFromArray} from "../../utils";
+import {getDate, getStringFromArray} from "../../../utils";
 import css from './MovieDetailsInfo.module.css'
 
 const MovieDetailsInfo = ({info}) => {

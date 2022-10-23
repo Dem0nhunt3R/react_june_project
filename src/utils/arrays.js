@@ -1,4 +1,4 @@
-const getStringFromArray = (array) => {
+export const getStringFromArray = (array) => {
     let str = '';
     if (array.length === 1) {
         return array[0].name + '.';
@@ -15,8 +15,4 @@ const getStringFromArray = (array) => {
     }
 
     return str;
-}
-
-export {
-    getStringFromArray
 }

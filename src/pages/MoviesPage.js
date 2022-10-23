@@ -32,7 +32,6 @@ const MoviesPage = () => {
                 dispatch(movieActions.resetMovies());
                 if (genres.length > 1) {
                     const find = genres.find(g => g.name.toLowerCase() === genre);
-                    console.log(find)
                     dispatch(movieActions.getAll({genre: find.id}))
                 } else {
                     getGenreId(genre).then(genreId => dispatch(movieActions.getAll({genre: genreId})))
@@ -43,7 +42,6 @@ const MoviesPage = () => {
             } else {
                 if (genres.length > 1) {
                     const find = genres.find(g => g.name.toLowerCase() === genre);
-                    console.log(find)
                     dispatch(movieActions.getAll({pageNumber, genre: find.id}));
                 } else {
                     getGenreId(genre).then(genreId => dispatch(movieActions.getAll({pageNumber, genre: genreId})))

@@ -1,7 +1,7 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
-import {MainLayout} from "../layouts/MainLayout";
 import {ErrorPage, LoginPage, MoviePage, MoviesPage, RegistrationPage} from "../pages";
+import {MainLayout} from "../layouts/mainLayout/MainLayout";
 
 const AppRouter = () => {
     return (

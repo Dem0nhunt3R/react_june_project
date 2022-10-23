@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import {movieService} from "../../services";
-//todo make loading and error
+
 const initialState = {
     movies: [],
     movie: null,
@@ -21,7 +21,6 @@ const getAll = createAsyncThunk(
                     return data;
 
                 } else {
-                    // console.log(with_genres)
                     const {data} = await movieService.getMovies({with_genres});
                     return data;
                 }

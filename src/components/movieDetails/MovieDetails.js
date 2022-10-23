@@ -2,13 +2,13 @@ import {useSelector} from "react-redux";
 import {useState} from "react";
 
 import css from './MovieDetails.module.css'
-import {createImgUrl} from "../../utils";
 import {urls} from "../../constants";
 import {MyModal} from "../myModal/MyModal";
-import {MovieDetailsInfo} from "../movieDetailsInfo/movieDetailsInfo";
-import {MovieTitle} from "../movieTitle/MovieTitle";
-import {MovieOverview} from "../movieOverview/MovieOverview";
-import {MovieRating} from "../movieRating/MovieRating";
+import {MovieDetailsInfo} from "./movieDetailsInfo/movieDetailsInfo";
+import {MovieTitle} from "./movieTitle/MovieTitle";
+import {MovieOverview} from "./movieOverview/MovieOverview";
+import {MovieRating} from "./movieRating/MovieRating";
+import {MyImage} from "../myImage/MyImage";
 
 const MovieDetails = () => {
     const {movie} = useSelector(state => state.movieReducer);
@@ -36,7 +36,7 @@ const MovieDetails = () => {
                     <MovieTitle title={title} original_title={original_title}/>
                     <div className={css.infoContainer}>
                         <div className={css.img} onClick={() => setModal(true)}>
-                            <img src={createImgUrl(urls.imgSize200, path)} alt={title}/>
+                            <MyImage src={{size:urls.imgSize200, path}} alt={title}/>
                         </div>
                         <MovieDetailsInfo info={{tagline, date, genres, runtime, countries, companies, adult}}/>
                     </div>

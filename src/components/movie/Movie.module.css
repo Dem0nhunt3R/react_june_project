@@ -1,13 +1,9 @@
 .card{
     width: 20%;
-    height: 200px;
+    min-height: 200px;
     text-decoration: none;
 }
-.img{
-    width: 100%;
-    border:1px solid gainsboro;
-    border-radius: 5px;
-}
+
 .par{
     margin: 10px 0 0 10px;
     font-size: 1rem;
