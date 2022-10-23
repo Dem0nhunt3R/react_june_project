@@ -4,7 +4,7 @@ import {genreService} from "../../services";
 
 const initialState = {
     genres: [],
-    genre: null,
+    genre: 28,
     loading: false,
     error: null
 };
@@ -25,8 +25,8 @@ const genreSlice = createSlice({
     name: 'genreSlice',
     initialState,
     reducers: {
-        setGenreId: (state, action) => {
-            state.genre = action.payload;
+        setGenreId:(state, action)=>{
+            state.genreId=action.payload;
         }
     },
     extraReducers: builder => {

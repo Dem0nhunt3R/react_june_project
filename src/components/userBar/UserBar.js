@@ -5,7 +5,7 @@ import css from './UserBar.module.css'
 
 const UserBar = () => {
     return (
-        <div className={css.container}>
+        <div className={[css.container, 'bg-dark'].join(' ')}>
             <ThemeSwitcher/>
             <Logo/>
             <div className={css.userNav}>

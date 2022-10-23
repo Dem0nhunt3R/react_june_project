@@ -2,14 +2,16 @@ import {useSelector} from "react-redux";
 import {useState} from "react";
 
 import css from './MovieDetails.module.css'
-import {createImgUrl, getDate, getStringFromArray} from "../../utils";
-import {MyRating} from "../myRating/MyRating";
+import {createImgUrl} from "../../utils";
 import {urls} from "../../constants";
 import {MyModal} from "../myModal/MyModal";
+import {MovieDetailsInfo} from "../movieDetailsInfo/movieDetailsInfo";
+import {MovieTitle} from "../movieTitle/MovieTitle";
+import {MovieOverview} from "../movieOverview/MovieOverview";
+import {MovieRating} from "../movieRating/MovieRating";
 
 const MovieDetails = () => {
     const {movie} = useSelector(state => state.movieReducer);
-    const {checked} = useSelector(state => state.themeReducer);
     const [modal, setModal] = useState(null);
     const {
         title,
@@ -31,37 +33,16 @@ const MovieDetails = () => {
         <>
             {movie &&
                 <div className={css.container}>
-                    <div>
-                        <h2 className={checked ? css.white : css.black}>{title}</h2>
-                        {title !== original_title ?
-                            <h4 className={checked ? css.white : css.black}>{original_title}</h4> : ''}
-                    </div>
-
+                    <MovieTitle title={title} original_title={original_title}/>
                     <div className={css.infoContainer}>
                         <div className={css.img} onClick={() => setModal(true)}>
                             <img src={createImgUrl(urls.imgSize200, path)} alt={title}/>
                         </div>
-
-                        <div className={css.info}>
-                            {tagline && <p className={checked ? css.white : css.black}>Tagline: {tagline}</p>}
-                            <p className={checked ? css.white : css.black}>Release date: {getDate(date)}</p>
-                            <p className={checked ? css.white : css.black}>Genres: {getStringFromArray(genres)}</p>
-                            <p className={checked ? css.white : css.black}>Time: {runtime} minutes.</p>
-                            {adult && <p>18+</p>}
-                            <p className={checked ? css.white : css.black}>{countries.length > 1 ? 'Countries' : 'Country'}: {getStringFromArray(countries)}</p>
-                            <p className={checked ? css.white : css.black}>{companies.length > 1 ? 'Companies' : 'Company'}: {getStringFromArray(companies)}</p>
-                        </div>
-
+                        <MovieDetailsInfo info={{tagline, date, genres, runtime, countries, companies, adult}}/>
                     </div>
-
                     <div className={css.about}>
-                        <div>
-                            <MyRating rate={vote_average}/>
-                            <p className={checked ? css.white : css.black}>Ratings: {vote_average.toFixed(1)} ({vote_count} votes)</p>
-                        </div>
-
-                        <h3 className={checked ? css.white : css.black}>What is the film "{title}" about : </h3>
-                        <p className={checked ? css.white : css.black}>{overview}</p>
+                        <MovieRating vote_average={vote_average} vote_count={vote_count}/>
+                        <MovieOverview overview={overview} title={title}/>
                         <MyModal visible={modal} setVisible={setModal} img={{path, title}}/>
                     </div>
                 </div>

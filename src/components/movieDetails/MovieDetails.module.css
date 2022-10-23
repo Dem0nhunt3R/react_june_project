@@ -9,11 +9,12 @@
 
 .info {
     margin-left: 20px;
+    width: 50%;
 }
 
 .about {
     margin-top: 20px;
-    width: 50%;
+    width: 100%;
 }
 
 .img:hover {

@@ -1,8 +1,9 @@
+import {Todo} from "../components";
+
 const RegistrationPage = () => {
-    
     return (
         <div>
-            RegistrationPage
+            <Todo/>
         </div>
     );
 };

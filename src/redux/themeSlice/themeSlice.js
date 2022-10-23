@@ -2,9 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     checked: false,
-    bg: {backgroundColor:'white'},
-    color:{color:'black'},
-    col:'black'
+    cb:{color:'black'},
+    cw:{color:'white'},
 };
 
 const themeSlice = createSlice({
@@ -13,9 +12,7 @@ const themeSlice = createSlice({
     reducers: {
         toggle: (state, action) => {
             state.checked = action.payload;
-            state.bg = {backgroundColor:'black'};
             state.color = {color:'white'};
-            state.col='white'
         }
     },
     extraReducers: {}

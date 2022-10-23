@@ -1,7 +1,9 @@
+import {Todo} from "../components";
+
 const LoginPage = () => {
     return (
         <div>
-            LoginPage
+            <Todo/>
         </div>
     );
 };

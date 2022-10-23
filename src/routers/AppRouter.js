@@ -1,7 +1,7 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
 import {MainLayout} from "../layouts/MainLayout";
-import {ErrorPage, HomePage, LoginPage, MoviePage, MoviesPage, RegistrationPage} from "../pages";
+import {ErrorPage, LoginPage, MoviePage, MoviesPage, RegistrationPage} from "../pages";
 
 const AppRouter = () => {
     return (
@@ -9,7 +9,6 @@ const AppRouter = () => {
             <Routes>
                 <Route path={''} element={<MainLayout/>}>
                     <Route index element={<Navigate to={'movies'}/>}/>
-                    <Route path={'home'} element={<HomePage/>}/>
                     <Route path={'movies'} element={<MoviesPage/>}/>
                     <Route path={'movies/page/:pageNumber'} element={<MoviesPage/>}/>
                     <Route path={'movies/:genre'} element={<MoviesPage/>}/>

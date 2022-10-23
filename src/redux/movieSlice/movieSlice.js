@@ -21,7 +21,7 @@ const getAll = createAsyncThunk(
                     return data;
 
                 } else {
-                    console.log(with_genres)
+                    // console.log(with_genres)
                     const {data} = await movieService.getMovies({with_genres});
                     return data;
                 }
@@ -68,7 +68,6 @@ const movieSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                console.log(action.payload)
                 state.movies = action.payload.results;
                 state.totalPages = action.payload.total_pages;
                 state.loading = false;

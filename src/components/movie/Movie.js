@@ -5,15 +5,12 @@ import {movieActions} from "../../redux";
 import css from './Movie.module.css'
 import {createImgUrl} from "../../utils";
 import {urls} from "../../constants";
-import {useEffect} from "react";
 
 const Movie = ({movie}) => {
     const {backdrop_path: path, id, title, vote_average} = movie;
-    const {checked, bg, color} = useSelector(state => state.themeReducer);
+    const {checked, color} = useSelector(state => state.themeReducer);
     const dispatch = useDispatch();
-    useEffect(() => {
 
-    }, [color]);
     return (
         <div className={css.card} >
             <NavLink

@@ -1,24 +1,34 @@
-.outlet{
+.outlet {
     padding: 20px 0;
+    min-height: 600px;
 }
 
-.black{
+.black1 {
+    background-color: #1e1d1d;
+}
+
+.black2 {
     background-color: black;
 }
 
-.white{
+.white {
     background-color: white;
 }
 
-.container{
-    margin: 50px auto;
-    box-shadow: 0 0 10px rgb(0 0 0/40%);
-    width: 80%;
+.container {
+    padding: 50px 0;
+    box-sizing: border-box;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: sticky;
+}
+
+.content {
+    box-shadow: 0 0 10px rgb(0 0 0/40%);
+    width: 800px;
+    min-height: 1000px;
+    margin: auto;
 }

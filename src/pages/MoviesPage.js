@@ -3,30 +3,55 @@ import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 
 import {Movies, MyPagination} from "../components";
-import {movieActions} from "../redux";
+import {genreActions, movieActions} from "../redux";
 
 const MoviesPage = () => {
     const {pageNumber, genre} = useParams();
-    const {movies, currentPage} = useSelector(state => state.movieReducer);
-    const {genre:genreId} = useSelector(state => state.genreReducer);
+    const {movies} = useSelector(state => state.movieReducer);
+    const {genres} = useSelector(state => state.genreReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        try {
-            if (genre) {
-                if (pageNumber && genre) {
-                    dispatch(movieActions.getAll({pageNumber,genre: genreId}))
-                    dispatch(movieActions.setCurrentPage(+pageNumber));
-                } else {
-                    dispatch(movieActions.getAll({genre:genreId}));
-                }
-            } else {
-                dispatch(movieActions.getAll({pageNumber: currentPage}));
-            }
-        } catch (e) {
-            console.log(e)
+        if (!pageNumber && !genre) {
+            dispatch(genreActions.getAll());
+            dispatch(movieActions.setCurrentPage(1))
+            dispatch(movieActions.getAll({pageNumber: 1}));
         }
-    }, [currentPage, dispatch, pageNumber]);
+    }, [pageNumber, genre, dispatch]);
+
+    useEffect(() => {
+        const getGenreId = async (genre) => {
+            let arr = [];
+            await dispatch(genreActions.getAll()).then(({payload}) => arr = payload.genres)
+            const find = arr.find(g => g.name.toLowerCase() === genre);
+            return find.id;
+        }
+
+        if (pageNumber || genre) {
+            if (genre && !pageNumber) {
+                dispatch(movieActions.resetMovies());
+                if (genres.length > 1) {
+                    const find = genres.find(g => g.name.toLowerCase() === genre);
+                    console.log(find)
+                    dispatch(movieActions.getAll({genre: find.id}))
+                } else {
+                    getGenreId(genre).then(genreId => dispatch(movieActions.getAll({genre: genreId})))
+                }
+            } else if (!genre && pageNumber) {
+                dispatch(movieActions.setCurrentPage(+pageNumber));
+                dispatch(movieActions.getAll({pageNumber}));
+            } else {
+                if (genres.length > 1) {
+                    const find = genres.find(g => g.name.toLowerCase() === genre);
+                    console.log(find)
+                    dispatch(movieActions.getAll({pageNumber, genre: find.id}));
+                } else {
+                    getGenreId(genre).then(genreId => dispatch(movieActions.getAll({pageNumber, genre: genreId})))
+                }
+                dispatch(movieActions.setCurrentPage(+pageNumber));
+            }
+        }
+    }, [dispatch, pageNumber, genre]);
 
     return (
         <div>

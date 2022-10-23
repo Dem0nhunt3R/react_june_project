@@ -14,12 +14,14 @@ const MyPagination = ({endpoint, genre}) => {
     const handlePageChange = (e) => {
         if (e.selected + 1 === 1) {
             navigate(endpoint);
-            console.log(endpoint)
         } else {
-            console.log(endpoint)
-            dispatch(movieActions.setCurrentPage(e.selected + 1))
-            navigate(endpoint +'/'+(genre?genre:'')+ '/page/' + (e.selected + 1));
-            console.log({page: e.selected + 1, genre})
+            if (genre) {
+                dispatch(movieActions.setCurrentPage(e.selected + 1))
+                navigate(endpoint + '/' + (genre ? genre : '') + '/page/' + (e.selected + 1));
+            } else {
+                dispatch(movieActions.setCurrentPage(e.selected + 1))
+                navigate(endpoint + '/page/' + (e.selected + 1));
+            }
         }
     }
 
@@ -27,7 +29,6 @@ const MyPagination = ({endpoint, genre}) => {
         <div className={css.container}>
             <ReactPaginate
                 forcePage={currentPage - 1}
-                // onClick={()=>dispatch(movieActions.getAll())}
                 onPageChange={handlePageChange}
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={3}
