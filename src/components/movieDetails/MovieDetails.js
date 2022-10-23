@@ -43,10 +43,10 @@ const MovieDetails = () => {
                         </div>
 
                         <div className={css.info}>
-                            {tagline && <p>Tagline: {tagline}</p>}
+                            {tagline && <p className={checked ? css.white : css.black}>Tagline: {tagline}</p>}
                             <p className={checked ? css.white : css.black}>Release date: {getDate(date)}</p>
                             <p className={checked ? css.white : css.black}>Genres: {getStringFromArray(genres)}</p>
-                            <p className={checked ? css.white : css.black}>Time: {runtime}</p>
+                            <p className={checked ? css.white : css.black}>Time: {runtime} minutes.</p>
                             {adult && <p>18+</p>}
                             <p className={checked ? css.white : css.black}>{countries.length > 1 ? 'Countries' : 'Country'}: {getStringFromArray(countries)}</p>
                             <p className={checked ? css.white : css.black}>{companies.length > 1 ? 'Companies' : 'Company'}: {getStringFromArray(companies)}</p>
@@ -57,8 +57,7 @@ const MovieDetails = () => {
                     <div className={css.about}>
                         <div>
                             <MyRating rate={vote_average}/>
-                            <span
-                                className={checked ? css.white : css.black}>Ratings: {vote_average.toFixed(1)} ({vote_count} votes)</span>
+                            <p className={checked ? css.white : css.black}>Ratings: {vote_average.toFixed(1)} ({vote_count} votes)</p>
                         </div>
 
                         <h3 className={checked ? css.white : css.black}>What is the film "{title}" about : </h3>

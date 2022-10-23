@@ -2,15 +2,16 @@ import {Outlet} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import {Header} from "../components";
+import css from './MainLayout.module.css'
 
 const MainLayout = () => {
-    const {checked,bg} = useSelector(state => state.themeReducer);
+    const {checked} = useSelector(state => state.themeReducer);
 
     return (
-        <div>
-            <Header/>
-            <div style={(checked? bg : {})} ><Outlet/></div>
-        </div>
+            <div className={css.container}>
+                <Header/>
+                <div className={[checked ? css.black : css.white, css.outlet].join(' ')}><Outlet/></div>
+            </div>
     );
 };
 

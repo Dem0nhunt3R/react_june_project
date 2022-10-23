@@ -7,15 +7,28 @@ const initialState = {
     movie: null,
     currentPage: 1,
     loading: false,
-    error: null
+    error: null,
+    endpoint: '/movies'
 };
 
 const getAll = createAsyncThunk(
     'movieSlice/getAll',
-    async (pageNumber, {rejectWithValue}) => {
+    async ({pageNumber: page, genre: with_genres}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getMovies({page: pageNumber});
-            return data;
+            if (with_genres) {
+                if (with_genres && page) {
+                    const {data} = await movieService.getMovies({page, with_genres});
+                    return data;
+
+                } else {
+                    console.log(with_genres)
+                    const {data} = await movieService.getMovies({with_genres});
+                    return data;
+                }
+            } else if (page) {
+                const {data} = await movieService.getMovies({page});
+                return data;
+            }
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -47,6 +60,9 @@ const movieSlice = createSlice({
         },
         resetMovies: (state) => {
             state.movies = [];
+        },
+        setEndpoint: (state, action) => {
+            state.endpoint = action.payload;
         }
     },
     extraReducers: builder => {
@@ -78,14 +94,15 @@ const movieSlice = createSlice({
     }
 });
 
-const {reducer: movieReducer, actions: {setCurrentPage, resetMovie, resetMovies}} = movieSlice;
+const {reducer: movieReducer, actions: {setCurrentPage, resetMovie, resetMovies, setEndpoint}} = movieSlice;
 
 const movieActions = {
     getAll,
     getById,
     setCurrentPage,
     resetMovie,
-    resetMovies
+    resetMovies,
+    setEndpoint
 }
 
 export {movieReducer, movieActions};

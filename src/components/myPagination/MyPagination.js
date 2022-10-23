@@ -5,39 +5,42 @@ import {useNavigate} from "react-router-dom";
 import {movieActions} from "../../redux";
 import css from './MyPagination.module.css'
 
-const MyPagination = ({endpoint}) => {
+const MyPagination = ({endpoint, genre}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {currentPage} = useSelector(state => state.movieReducer);
     const {checked} = useSelector(state => state.themeReducer);
 
-
     const handlePageChange = (e) => {
         if (e.selected + 1 === 1) {
-            navigate(endpoint)
+            navigate(endpoint);
+            console.log(endpoint)
         } else {
-            navigate(endpoint + '/page/' + (e.selected + 1))
+            console.log(endpoint)
+            dispatch(movieActions.setCurrentPage(e.selected + 1))
+            navigate(endpoint +'/'+(genre?genre:'')+ '/page/' + (e.selected + 1));
+            console.log({page: e.selected + 1, genre})
         }
-        dispatch(movieActions.setCurrentPage(e.selected + 1))
     }
 
     return (
         <div className={css.container}>
             <ReactPaginate
-            forcePage={currentPage - 1}
-            onPageChange={handlePageChange}
-            marginPagesDisplayed={1}
-            pageRangeDisplayed={3}
-            pageCount={500}
-            className={css.Pagination}
-            activeLinkClassName={[css.current, checked ? css.black : css.white].join(' ')}
-            breakLinkClassName={[css.link, checked ? css.white : css.black].join(' ')}
-            pageLinkClassName={[css.link, checked ? css.white : css.black].join(' ')}
-            previousLabel={<i className="fa-solid fa-circle-arrow-left"></i>}
-            previousLinkClassName={[css.link, checked ? css.white : css.black, css.navLink].join(' ')}
-            nextLabel={<i className="fa-solid fa-circle-arrow-right"></i>}
-            nextLinkClassName={[css.link, checked ? css.white : css.black, css.navLink].join(' ')}
-        />
+                forcePage={currentPage - 1}
+                // onClick={()=>dispatch(movieActions.getAll())}
+                onPageChange={handlePageChange}
+                marginPagesDisplayed={1}
+                pageRangeDisplayed={3}
+                pageCount={500}
+                className={css.Pagination}
+                activeLinkClassName={[css.current, checked ? css.black : css.white].join(' ')}
+                breakLinkClassName={[css.link, checked ? css.white : css.black].join(' ')}
+                pageLinkClassName={[css.link, checked ? css.white : css.black].join(' ')}
+                previousLabel={<i className="fa-solid fa-circle-arrow-left"></i>}
+                previousLinkClassName={[css.link, checked ? css.white : css.black, css.navLink].join(' ')}
+                nextLabel={<i className="fa-solid fa-circle-arrow-right"></i>}
+                nextLinkClassName={[css.link, checked ? css.white : css.black, css.navLink].join(' ')}
+            />
         </div>
     );
 };

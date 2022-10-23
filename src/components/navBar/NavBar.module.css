@@ -15,7 +15,13 @@
 }
 
 .link {
+    height: 100%;
     text-decoration: none;
+    color: black;
+}
+.link:hover{
+    text-decoration: underline;
+    color: black;
 }
 
 .black {
@@ -31,10 +37,10 @@
 }
 
 .dropdown {
-    width: 80%;
-    height: 100px;
+    width: 60%;
     background-color: white;
-    border: 1px solid grey;
+    position: absolute;
+    box-shadow: 0 0 10px rgb(0 0 0/40%);
 }
 
 .disNone {
@@ -42,6 +48,31 @@
 }
 
 .disGrid {
-    position: relative;
-    display: block;
+    position: absolute;
+}
+
+.dropLink{
+    font-size: 15px;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: black;
+}
+
+.genres{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: 20px;
+    list-style: none;
+    gap: 10px;
+    padding: 10px 0 10px 50px;
+    box-sizing: border-box;
+}
+.dropLi{
+    height: 25px;
+    padding-left: 10px;
+}
+.dropLi:hover{
+    background-color:gainsboro;
+    color: white;
+    border-radius: 5px;
 }
