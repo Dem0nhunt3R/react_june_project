@@ -15,7 +15,10 @@ const Movie = ({movie}) => {
         <div className={css.card} >
             <NavLink
                 to={'/movie/' + id + '-' + title.replaceAll(':', '').split(' ').join('-')}
-                onClick={() => dispatch(movieActions.resetMovie())}
+                onClick={() => {
+                    dispatch(movieActions.resetMovie());
+                    document.documentElement.scrollTop = 0;
+                }}
                 className={css.card} style={checked?color:{}}>
                 <MyImage src={{size: urls.imgSize200,path}} alt={title}/>
                 <p className={css.par} style={checked?color:{}}>{title}</p>
