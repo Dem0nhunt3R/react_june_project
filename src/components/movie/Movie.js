@@ -14,7 +14,7 @@ const Movie = ({movie}) => {
     return (
         <div className={css.card} >
             <NavLink
-                to={'/movie/' + id + '-' + title.replaceAll(':', '').split(' ').join('-')}
+                to={'/movie/' + id + '-' + title.replaceAll(/[.*+?^${}\-()!:/|[\]\\]/g, '').split(' ').join('-')}
                 onClick={() => {
                     dispatch(movieActions.resetMovie());
                     document.documentElement.scrollTop = 0;
