@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import css from './MovieDetails.module.css'
 import {urls} from "../../constants";
@@ -29,6 +29,12 @@ const MovieDetails = () => {
         production_companies: companies,
     } = movie || '';
 
+    useEffect(() => {
+        if (title) {
+            document.title = title;
+        }
+    }, [title]);
+
     return (
         <>
             {movie &&
@@ -36,7 +42,7 @@ const MovieDetails = () => {
                     <MovieTitle title={title} original_title={original_title}/>
                     <div className={css.infoContainer}>
                         <div className={css.img} onClick={() => setModal(true)}>
-                            <MyImage src={{size:urls.imgSize200, path}} alt={title}/>
+                            <MyImage src={{size: urls.imgSize200, path}} alt={title}/>
                         </div>
                         <MovieDetailsInfo info={{tagline, date, genres, runtime, countries, companies, adult}}/>
                     </div>
