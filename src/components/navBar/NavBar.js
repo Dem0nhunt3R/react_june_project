@@ -23,7 +23,9 @@ const NavBar = () => {
                                      dispatch(genreActions.getAll());
                                  }
                                  setVisible(true);
-                             }}>Movies</NavLink>
+                             }}>Movies
+                        <i className="fa-solid fa-caret-down"></i>
+                    </NavLink>
                     <NavLink className={css.link} to={'#'}>Series</NavLink>
                     <NavLink className={css.link} to={'#'}>Cartoons</NavLink>
                     <NavLink className={css.link} to={'#'}>Animations</NavLink>

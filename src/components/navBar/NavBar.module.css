@@ -82,3 +82,7 @@
     opacity: 0.95;
     box-shadow: 0 0 10px  rgb(255 255 255);
 }
+
+.arrow{
+    font-size: 10px;
+}

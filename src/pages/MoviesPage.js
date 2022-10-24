@@ -43,7 +43,6 @@ const MoviesPage = () => {
                         const find = genres.find(g => g.name.toLowerCase() === genre);
                         dispatch(movieActions.getAll({page: pageNumber, with_genres: find.id}));
                     }
-
                 }
             }, [dispatch, pageNumber, genre]
         )
