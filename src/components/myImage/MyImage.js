@@ -4,7 +4,6 @@ import {createImgUrl} from "../../utils";
 
 const MyImage = ({src, alt}) => {
     const {size, path} = src;
-
     return (
         <>
             {path ?

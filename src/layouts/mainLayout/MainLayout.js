@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {Header} from "../../components";
 import css from './MainLayout.module.css'
 import {currentTime} from "../../utils";
+import {movieService} from "../../services";
 
 const MainLayout = () => {
     const {checked} = useSelector(state => state.themeReducer);
@@ -18,6 +19,8 @@ const MainLayout = () => {
             setTimeColor(false);
         }
     }, [timeColor]);
+
+    // movieService.searchMovies({query: 'Black+Adam'}).then(value => console.log(value))
 
     return (
         <div className={[css.container, timeColor ? css.black2 : css.white].join(' ')}>

@@ -4,6 +4,7 @@ import {useState} from "react";
 
 import {genreActions, movieActions} from "../../redux";
 import css from './NavBar.module.css';
+import {SearchForm} from "../searchForm/SearchForm";
 
 const NavBar = () => {
     const {checked} = useSelector(state => state.themeReducer);
@@ -29,6 +30,9 @@ const NavBar = () => {
                     <NavLink className={css.link} to={'#'}>Series</NavLink>
                     <NavLink className={css.link} to={'#'}>Cartoons</NavLink>
                     <NavLink className={css.link} to={'#'}>Animations</NavLink>
+                </div>
+                <div className={css.formBox}>
+                    <SearchForm/>
                 </div>
             </div>
 

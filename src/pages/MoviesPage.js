@@ -6,7 +6,7 @@ import {Movies, MyPagination} from "../components";
 import {genreActions, movieActions} from "../redux";
 
 const MoviesPage = () => {
-        const {pageNumber, genre} = useParams();
+        const {pageNumber, genre,q} = useParams();
         const {movies} = useSelector(state => state.movieReducer);
         const {genres} = useSelector(state => state.genreReducer);
         const dispatch = useDispatch();
@@ -15,6 +15,12 @@ const MoviesPage = () => {
             const genres = await dispatch(genreActions.getAll()).then(({payload}) => payload.genres);
             return genres.find(g => g.name.toLowerCase() === genre).id;
         }
+
+        useEffect(() => {
+            if(q){
+                movieActions.search({query:q})
+            }
+        }, [q]);
 
         useEffect(() => {
             if (!pageNumber && !genre) {
@@ -44,7 +50,7 @@ const MoviesPage = () => {
                         dispatch(movieActions.getAll({page: pageNumber, with_genres: find.id}));
                     }
                 }
-            }, [dispatch, pageNumber, genre]
+            }, [dispatch, pageNumber, genre,q]
         )
         ;
 

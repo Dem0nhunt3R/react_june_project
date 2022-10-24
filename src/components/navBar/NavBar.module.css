@@ -20,7 +20,8 @@
     text-decoration: none;
     color: white;
 }
-.link:hover{
+
+.link:hover {
     text-decoration: underline;
     color: black;
 }
@@ -54,35 +55,53 @@
     position: absolute;
 }
 
-.genres{
+.genres {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 20px;
     gap: 10px;
     padding: 10px 0 10px 50px;
     box-sizing: border-box;
-    overflow:auto;
+    overflow: auto;
 }
-.dropLi{
+
+.dropLi {
     height: 25px;
     padding-left: 10px;
     box-sizing: border-box;
     font-size: 15px;
     text-decoration: none;
 }
-.dropLi:hover{
+
+.dropLi:hover {
     color: white;
-    background-color:teal;
+    background-color: teal;
     border-radius: 5px;
 }
 
-.bgb{
+.bgb {
     border: 1px solid white;
     background-color: #1e1d1d;
     opacity: 0.95;
-    box-shadow: 0 0 10px  rgb(255 255 255);
+    box-shadow: 0 0 10px rgb(255 255 255);
 }
 
-.arrow{
+.arrow {
     font-size: 10px;
+}
+
+.formBox{
+    width: 50%;
+
+}
+
+.formBox>form{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 5px;
+}
+
+.formBox>form>input{
+    width: 80%;
 }
