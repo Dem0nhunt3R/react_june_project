@@ -6,7 +6,7 @@ import {Movies, MyPagination, NotFoundSearch} from "../components";
 import {movieActions} from "../redux";
 
 const SearchPage = () => {
-    const {currentPage, movies, loading} = useSelector(state => state.movieReducer);
+    const {currentPage, movies} = useSelector(state => state.movieReducer);
     const dispatch = useDispatch();
     const {params: search, pageNumber} = useParams();
 
@@ -24,12 +24,13 @@ const SearchPage = () => {
 
     return (
         <div>
-            {loading ? <></> : movies.length !== 0 ?
-                <div>
-                    <Movies/>
-                    <MyPagination/>
-                </div>
-                : <NotFoundSearch search={search}/>
+            {
+                movies.length !== 0 ?
+                    <div>
+                        <Movies/>
+                        <MyPagination/>
+                    </div>
+                    : <NotFoundSearch search={search}/>
             }
         </div>
     );
