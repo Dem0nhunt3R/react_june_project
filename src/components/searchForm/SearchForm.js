@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {movieActions} from "../../redux";
 
 const SearchForm = () => {
@@ -11,7 +11,7 @@ const SearchForm = () => {
     const submit = (e) => {
         console.log(e);
             dispatch(movieActions.search({query: e.search.split(' ').join('+')}))
-            navigate('/movies/search/' + e.search.split(' ').join('+'));
+            navigate('search/' + e.search.split(' ').join('+'));
             reset();
     }
 

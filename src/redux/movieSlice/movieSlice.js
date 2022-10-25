@@ -9,7 +9,7 @@ const initialState = {
     loading: false,
     error: null,
     endpoint: '/movies',
-    totalPages:20
+    totalPages: 1
 };
 
 const getAll = createAsyncThunk(
@@ -69,6 +69,7 @@ const movieSlice = createSlice({
         builder
             .addCase(getAll.fulfilled, (state, action) => {
                 console.log(state.totalPages = action.payload.total_pages)
+                state.totalPages = state.totalPages = action.payload.total_pages >= 500 ? 500 : action.payload.total_pages;
                 state.movies = action.payload.results;
                 state.loading = false;
             })
@@ -93,7 +94,6 @@ const movieSlice = createSlice({
             .addCase(search.fulfilled, (state, action) => {
                 console.log(action.payload)
                 console.log(action.payload.results)
-                state.currentPage=action.payload.page
                 state.movies = action.payload.results;
                 state.totalPages = action.payload.total_pages;
                 state.loading = false;

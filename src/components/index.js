@@ -6,3 +6,4 @@ export * from './movieDetails/MovieDetails';
 export * from './myRating/MyRating';
 export * from './myModal/MyModal';
 export * from './todo/Todo';
+export * from './notFoundSearch/NotFoundSearch';

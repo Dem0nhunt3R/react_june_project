@@ -3,3 +3,4 @@ export * from './MoviePage';
 export * from './ErrorPage';
 export * from './RegistrationPage';
 export * from './LoginPage';
+export * from './SearchPage';

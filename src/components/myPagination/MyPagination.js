@@ -8,33 +8,37 @@ import css from './MyPagination.module.css'
 const MyPagination = ({endpoint, genre}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {q} = useParams();
-    const {currentPage, total_Pages} = useSelector(state => state.movieReducer);
+    const {params: search} = useParams();
+    const {currentPage, totalPages} = useSelector(state => state.movieReducer);
     const {checked} = useSelector(state => state.themeReducer);
-    const {totalPages} = useSelector(state => state.movieReducer);
-    console.log(q)
-    const handlePageChange = (e) => {
-        if(q){
-            console.log(q)
-            navigate(endpoint+'/'+q+'/'+(e.selected + 1));
 
-        }
-        if (e.selected + 1 === 1) {
-            navigate(endpoint);
-        } else {
-            if (genre) {
-                dispatch(movieActions.setCurrentPage(e.selected + 1))
-                navigate(endpoint + '/' + (genre ? genre : '') + '/page/' + (e.selected + 1));
+    const handlePageChange = (e) => {
+        if (search) {
+            if (e.selected + 1 === 1) {
+                navigate('/search/' + search);
             } else {
-                dispatch(movieActions.setCurrentPage(e.selected + 1))
-                navigate(endpoint + '/page/' + (e.selected + 1));
+                console.log(e.selected)
+                dispatch(movieActions.setCurrentPage(e.selected + 1));
+                navigate('/search/' + search + '/page/' + (e.selected + 1))
+            }
+        } else {
+            if (e.selected + 1 === 1) {
+                navigate(endpoint);
+            } else {
+                if (genre) {
+                    dispatch(movieActions.setCurrentPage(e.selected + 1))
+                    navigate(endpoint + '/' + (genre ? genre : '') + '/page/' + (e.selected + 1));
+                } else {
+                    dispatch(movieActions.setCurrentPage(e.selected + 1))
+                    navigate(endpoint + '/page/' + (e.selected + 1));
+                }
             }
         }
     }
 
     return (
         <>
-            {totalPages > 1 && <div className={css.container}>
+            <div className={css.container}>
                 <ReactPaginate
                     forcePage={currentPage - 1}
                     onPageChange={handlePageChange}
@@ -50,7 +54,7 @@ const MyPagination = ({endpoint, genre}) => {
                     nextLabel={<i className="fa-solid fa-circle-arrow-right"></i>}
                     nextLinkClassName={[css.link, checked ? css.white : css.black, css.navLink].join(' ')}
                 />
-            </div>}
+            </div>
         </>
     );
 }

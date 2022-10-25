@@ -103,5 +103,10 @@
 }
 
 .formBox>form>input{
+    width: 40%;
+    transition: width  1s;
+}
+
+.formBox>form>input:focus{
     width: 80%;
 }
