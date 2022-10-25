@@ -9,10 +9,9 @@ const SearchForm = () => {
     const {register, reset, handleSubmit} = useForm();
 
     const submit = (e) => {
-        console.log(e);
-            dispatch(movieActions.search({query: e.search.split(' ').join('+')}))
-            navigate('search/' + e.search.split(' ').join('+'));
-            reset();
+        dispatch(movieActions.search({query: e.search.split(' ').join('+')}))
+        navigate('search/' + e.search.split(' ').join('+'));
+        reset();
     }
 
     return (

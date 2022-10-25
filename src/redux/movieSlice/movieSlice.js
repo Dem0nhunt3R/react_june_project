@@ -31,7 +31,6 @@ const getById = createAsyncThunk(
             const {data} = await movieService.getMovieById(id);
             return data;
         } catch (e) {
-            console.log(e)
             return rejectWithValue(e.response.data);
         }
     }
@@ -68,7 +67,6 @@ const movieSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                console.log(state.totalPages = action.payload.total_pages)
                 state.totalPages = state.totalPages = action.payload.total_pages >= 500 ? 500 : action.payload.total_pages;
                 state.movies = action.payload.results;
                 state.loading = false;
@@ -92,8 +90,6 @@ const movieSlice = createSlice({
                 state.loading = false;
             })
             .addCase(search.fulfilled, (state, action) => {
-                console.log(action.payload)
-                console.log(action.payload.results)
                 state.movies = action.payload.results;
                 state.totalPages = action.payload.total_pages;
                 state.loading = false;

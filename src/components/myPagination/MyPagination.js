@@ -17,7 +17,6 @@ const MyPagination = ({endpoint, genre}) => {
             if (e.selected + 1 === 1) {
                 navigate('/search/' + search);
             } else {
-                console.log(e.selected)
                 dispatch(movieActions.setCurrentPage(e.selected + 1));
                 navigate('/search/' + search + '/page/' + (e.selected + 1))
             }
